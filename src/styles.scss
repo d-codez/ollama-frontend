@@ -1,1 +1,208 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+// Define color variables for reuse
+$background-light: #e8fdfc;
+$background-dark: #074678;
+$border-light: #5db5c4;
+$text-dark: #074678;
+$placeholder: #fcad27;
+$logo-bg: #37eda9;
+$message-bg-light: #5db5c4;
+$message-bg-dark: #074678;
+
+body {
+  background-color: $background-light;
+  color: $text-dark;
+  font-family: "Work Sans", sans-serif;
+}
+
+textarea,
+button {
+  background-color: $background-dark;
+  color: $background-light;
+  border-color: $border-light;
+  border-radius: 9999px;
+}
+
+textarea:focus,
+button:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: $border-light;
+}
+
+textarea::placeholder {
+  color: $placeholder;
+}
+
+footer {
+  background-color: $background-dark;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  position: relative;
+}
+
+#chat-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 8rem);
+  overflow-y: auto;
+  padding: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: $border-light $background-dark;
+}
+
+#chat-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+#chat-container::-webkit-scrollbar-track {
+  background: $background-dark;
+}
+
+#chat-container::-webkit-scrollbar-thumb {
+  background-color: $border-light;
+  border-radius: 9999px;
+  border: 3px solid $background-dark;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main .mb-2 {
+  width: 100%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.user-message,
+.response-message {
+  padding: 10px 15px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.user-message {
+  background-color: $message-bg-light;
+  color: $text-dark;
+}
+
+.response-message {
+  background-color: $message-bg-dark;
+  color: $background-light;
+}
+
+.logo-round {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: $logo-bg;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.message-icon {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: $background-light;
+  color: $text-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-container {
+  max-width: 100%;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+
+.snippet {
+  position: relative;
+  padding: 8px 10px;
+}
+
+.dot-flashing {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: $logo-bg;
+  color: $logo-bg;
+  animation: dot-flashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+}
+
+.dot-flashing::before,
+.dot-flashing::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-flashing::before {
+  left: -15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: $logo-bg;
+  color: $logo-bg;
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+
+.dot-flashing::after {
+  left: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: $logo-bg;
+  color: $logo-bg;
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes dot-flashing {
+  0% {
+    background-color: $logo-bg;
+  }
+  50%,
+  100% {
+    background-color: rgba(55, 237, 169, 0.2);
+  }
+}
